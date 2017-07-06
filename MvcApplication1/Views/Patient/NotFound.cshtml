@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "NotFound";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <label>Search</label>
+                            </div>
+                            @using (Html.BeginForm("Find", "Patient", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Keyword" placeholder="Keyword">
+                                    </div>
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-md btn-info btn-fill"><i class="pe-7s-search"></i></button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <center><h4 class="title">Any matches could not be found</h4></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

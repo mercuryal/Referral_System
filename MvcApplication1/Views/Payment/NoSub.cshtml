@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "NoSub";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="content">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <center><h4>You don't have subscribed yet</h4></center>
+                            </div>
+                        </div>
+                        <center><a href="@Url.Action("Create","Payment")" class="btn btn-success btn-fill">Subscribe</a></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

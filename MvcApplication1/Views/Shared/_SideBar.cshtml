@@ -1,0 +1,113 @@
+﻿@{
+    var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+
+
+<div class="sidebar" data-color="blue" data-image="@Url.Content("Content/themes/userTheme/assets/img/sidebar-5.jpg")">
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="#" class="simple-text">
+                LOGO
+            </a>
+        </div>
+        <ul class="nav">
+            
+            @if(controllerName == "Payment")
+            {
+                <li class="active">
+                    <a href="@Url.Action("Index", "Payment")">
+                        <i class="pe-7s-user"></i>
+                        <p>My account</p>
+                    </a>
+                </li>
+             }
+             else
+             {
+                <li>
+                    <a href="@Url.Action("Index", "Payment")">
+                        <i class="pe-7s-user"></i>
+                        <p>My account</p>
+                    </a>
+                </li>
+             }
+            @if(controllerName == "Referral")
+            {
+                <li class="active">
+                    <a href="@Url.Action("Index", "Referral")">
+                        <i class="pe-7s-note2"></i>
+                        <p>Referrals</p>
+                    </a>
+                </li>
+             }
+             else
+             {
+                <li>
+                    <a href="@Url.Action("Index", "Referral")">
+                        <i class="pe-7s-note2"></i>
+                        <p>Referrals</p>
+                    </a>
+                </li>
+             }
+            @if(controllerName == "Reason")
+            {
+                <li class="active">
+                    <a href="@Url.Action("Index", "Reason")">
+                        <i class="pe-7s-eyedropper"></i>
+                        <p>Reasons</p>
+                    </a>
+                 </li>
+             }
+             else
+             {
+                <li>
+                    <a href="@Url.Action("Index", "Reason")">
+                        <i class="pe-7s-eyedropper"></i>
+                        <p>Reasons</p>
+                    </a>
+                </li>
+             }
+            @if(controllerName == "Patient")
+            {
+                <li class="active">
+                    <a href="@Url.Action("Index", "Patient")">
+                        <i class="pe-7s-user"></i>
+                        <p>Patients</p>
+                    </a>
+                </li>
+             }
+             else
+             {
+                <li>
+                    <a href="@Url.Action("Index", "Patient")">
+                        <i class="pe-7s-user"></i>
+                        <p>Patients</p>
+                    </a>
+                </li>
+             }
+            @if(controllerName == "Doctor")
+            {
+                <li class="active">
+                    <a href="@Url.Action("Index", "Doctor")">
+                        <i class="pe-7s-science"></i>
+                        <p>Doctors</p>
+                    </a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="@Url.Action("Index", "Doctor")">
+                        <i class="pe-7s-science"></i>
+                        <p>Doctors</p>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+}

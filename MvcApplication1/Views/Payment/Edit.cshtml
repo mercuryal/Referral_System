@@ -1,0 +1,82 @@
+﻿@model MvcApplication1.Models.Subscription
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Update my payment method</h4>
+                    </div>
+                    <div class="content">
+                        @using (Html.BeginForm("Edit", "Payment", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Credit Card</label>
+                                        <input type="text" class="form-control" value="@Model.CreditCard" name="CreditCard" required>
+                                    </div>
+                                </div>
+                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Billing address</label>
+                                        <input type="text" class="form-control" value="@Model.BillingAddress" name="BillingAddress" required>
+                                    </div>
+                                </div>
+                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Card number</label>
+                                        <input type="text" class="form-control" value="" placeholder="xxxx-xxxx-xxxx-xxxx" name="CardNumber" required>
+                                    </div>
+                                </div>
+                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">CVV Code</label>
+                                        <input type="text" class="form-control" value="" name="CVVCode" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Expiration Date</label>
+                                        <input type="date" class="form-control" name="ExpirationDate" value="@Model.ExpirationDate" required>
+                                    </div>
+                                </div>
+                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Zip</label>
+                                        <input type="text" class="form-control" value="@Model.Zip" name="Zip" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary btn-fill">Save</button>
+                                </div>
+                            </div>
+                        }
+                            <div class="clearfix"></div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

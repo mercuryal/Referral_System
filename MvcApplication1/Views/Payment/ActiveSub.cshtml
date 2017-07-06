@@ -1,0 +1,62 @@
+﻿@model MvcApplication1.Models.Subscription
+
+@{
+    ViewBag.Title = "ActiveSub";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<h2>ActiveSub</h2>
+<div class="row-fluid">
+    <div class="span6">
+<div class="widget-box">
+    <div class="widget-title">
+        <span class="icon"> <i class="icon-align-justify"></i> </span>
+        <h5>Form Elements</h5>
+    </div>
+    <div class="widget-content nopadding">
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="control-group">
+                <label class="control-label">Payment Mehod</label>
+                <div class="controls">
+                    <select>
+                        <option>Credit card</option>
+                        <option>Paypal</option>
+                        <option>Bank transfer</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Multiple Select input</label>
+                <div class="controls">
+                    <select multiple>
+                        <option>First option</option>
+                        <option selected>Second option</option>
+                        <option>Third option</option>
+                        <option>Fourth option</option>
+                        <option>Fifth option</option>
+                        <option>Sixth option</option>
+                        <option>Seventh option</option>
+                        <option>Eighth option</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Upload invoice</label>
+                <div class="controls">
+                    <input type="file" />
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success">Send</button>
+            </div>
+        }
+    </div>
+</div>
+</div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

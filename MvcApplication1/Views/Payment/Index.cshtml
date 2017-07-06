@@ -1,0 +1,128 @@
+﻿@model IEnumerable<MvcApplication1.Models.Subscription>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+    string MyStatus;
+    foreach (var item in Model)
+    {
+        MyStatus = item.Status;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>      
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="content">
+                        <h3>My Account</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @if(MyStatus == "active")
+                                        {
+                                        <h4>Your subscription is active</h4>
+                                        }
+                                    @if (MyStatus == "inactive")
+                                    {
+                                        <h4>Your subscription has expired</h4>
+                                        <br />
+                                        <a href="@Url.Action("Confirm", "Payment")" class="btn btn-success btn-fill">Reactive now!</a>
+                                    
+                                    }
+                                @if (MyStatus == "suspended")
+                                {
+
+                                    <h4>You have suspended your subscription</h4>
+                                    <br />
+                                        <button type="button" class="btn btn-success btn-fill" id="ShowModal" data-toggle="modal" data-target="#ReactiveModal">
+                                        Reactive now!
+                                        </button>
+                                }
+</div>
+                            </div>
+                        </div>
+                        <label>Your payment method</label>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover table-striped">
+                                  <thead>
+                                      <th>Credit card</th>
+                                      <th>Card Number</th>
+                                      <th>CVV Code</th>
+                                      <th>Billing address</th>
+                                      <th>Zip</th>
+                                  </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>@item.CreditCard</td>
+                                            <td>@item.CardNumber</td>
+                                            <td>@item.CVVCode</td>
+                                            <td>@item.BillingAddress</td>
+                                            <td>@item.Zip</td>
+                                        </tr>
+                                    </tbody>  
+                            </table>
+                        </div>
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit","Payment", new {id=item.UserProfileId})" class="btn btn-sm btn-info btn-fill">Change or update</a>
+                            @if (item.Status == "active")
+                            {
+                                <button type="button" class="btn btn-sm btn-warning btn-fill" id="ShowModal" data-toggle="modal" data-target="#DeactiveModal">
+                                    De-active subscription
+                                </button>
+                              
+                            }
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Your payment history</h4>
+                        <p class="category">Here is a list of all your patients registered before</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Concept</th>
+                            <th>Date cancelled</th>
+                            <th>Status</th>
+                            </thead>
+                            <tbody>
+                                @foreach (var payment in item.Payments)
+                                {
+                                    <tr>
+                                        <td>
+                                            @payment.Date
+                                        </td>
+                                        <td>
+                                            @payment.Amount USD
+                                        </td>
+                                        <td>
+                                            Monthly subscription
+                                        </td>
+                                        <td>
+                                            Date
+                                        </td>
+                                        <td>
+                                            @payment.Status
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+    }
+}

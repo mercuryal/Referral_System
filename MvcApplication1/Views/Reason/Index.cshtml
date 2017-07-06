@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MvcApplication1.Models.Reason>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Reasons</h4>
+                        <p class="category">List of reasons registered</p>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="@Url.Action("Create", "Reason")" class="btn btn-sm btn-info btn-fill pull-right">New reason</a>
+                        
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <th>Name</th>
+                            <th>Description </th>
+                            <th>Referrals</th>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Name
+                                        </td>
+                                        <td>
+                                            @item.Description
+                                        </td>
+                                        <td>
+                                            @item.Referrals.Count
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Edit", "Reason", new { id = @item.Id})" class="btn btn-sm btn-info btn-fill">Edit</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

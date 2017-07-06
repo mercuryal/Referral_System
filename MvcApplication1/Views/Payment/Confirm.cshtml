@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MvcApplication1.Models.Subscription>
+
+@{
+    ViewBag.Title = "Confirm";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Payment info</h4>
+                        <p>Your payment method</p>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        float debt = 0f;
+                        foreach (var payment in item.Payments)
+                        {
+                            if (payment.Status == "overdue")
+                            {
+                                debt = debt + payment.Amount;
+                            }
+                        }
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <th>Credit Card</th>
+                            <th>Card code </th>
+                            <th>CVV Code</th>
+                            <th>Billing Address</th>
+                            <th>Expiration Date</th>
+                            </thead>
+                            <tbody>
+                                    <tr>
+                                        <td>
+                                            @item.CreditCard
+                                        </td>
+                                        <td>
+                                            @item.CardNumber
+                                        </td>
+                                        <td>
+                                            @item.CVVCode
+                                        </td>
+                                        <td>
+                                            @item.BillingAddress
+                                        </td>
+                                        <td>
+                                            @item.ExpirationDate
+                                        </td>
+                                    </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="header">
+                        <h4 class="title">Amount</h4>
+                        <p>@debt USD</p>
+                        <center><a href="@Url.Action("ReactiveFromOverdue", "Payment")" class="btn btn-info btn-fill">Confirm</a></center> 
+                        <br />
+                    </div>
+                      }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

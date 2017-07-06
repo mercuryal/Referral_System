@@ -1,0 +1,187 @@
+﻿@model IEnumerable<MvcApplication1.Models.ViewModels.ReferralCreationVM>
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Referral form</h4>
+                    </div>
+                    <div class="content">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Doctor</label>
+                                        <select name="Doctor" id="Doctor" class="form-control" onchange="InitializeDoctor()">
+                                            <option selected disabled>Search doctor</option>
+                                            @foreach (var doctor in Model)
+                                            {
+                                                foreach (var item in doctor.DoctorModels)
+                                                {
+                                                    <option value="@item.Id">@item.Name @item.Last_name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>City</label>
+                                        <input type="text" class="form-control" placeholder="City" id="City" name="City" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>State</label>
+                                        <input type="text" class="form-control" placeholder="State" name="State" id="State" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Clinic</label>
+                                        <input type="text" class="form-control" value="" id="Clinic">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>DEA</label>
+                                        <input type="text" class="form-control" id="DEA" disabled value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>NPI</label>
+                                        <input type="text" class="form-control" id="NPI" disabled value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>NABP</label>
+                                        <input type="number" class="form-control" id="NABP" disabled value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>Patient</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" name="Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Middle Initial</label>
+                                        <input type="text" class="form-control" name="Middle_initial">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Last name</label>
+                                        <input type="text" class="form-control" name="Last_name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" name="PatientEmail"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Reason</label>
+                                        <select name="Reason" class="form-control">
+                                            @foreach (var item in Model)
+                                            {
+                                                foreach(var reason in item.ReasonModels)
+                                                {
+                                                    <option value="@reason.Id">@reason.Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Date</label>
+                                        <input type="date" name="Date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Notes</label>
+                                        <textarea rows="5" class="form-control" placeholder="Here can be your description" name="Notes"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Create</button>
+                            <div class="clearfix"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+
+        var jsonModel = @Html.Raw(Json.Encode(Model.ElementAt(0).DoctorModels))
+        function InitializeDoctor() {
+            var doctorId = $("#Doctor").val();
+            var doctor = Find(doctorId);
+            console.log(doctor);
+            $("#City").val(doctor.City);
+            $("#Clinic").val(doctor.Clinic_name);
+            $("#State").val(doctor.State);
+            $("#DEA").val(doctor.DEA);
+            $("#NABP").val(doctor.NAGP);
+            $("#NPI").val(doctor.NPI);
+        }
+
+        function Find(id)
+        {
+            for(var i=0; i<jsonModel.length; i++)
+            {
+                if (jsonModel[i].Id == id)
+                    return jsonModel[i];
+            }
+        }
+
+        $("#Doctor").onChange(function () {
+            var doctorId = $("#Doctor").val();
+       
+            console.log(jsonModel);
+            });
+    </script>
+}

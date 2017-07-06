@@ -1,0 +1,90 @@
+﻿@model MvcApplication1.Models.RegisterModel
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Matrix Admin</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @Styles.Render("~/Content/themes/mytheme/css/account")
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body class="no-margin">
+    <div id="loginbox">
+        @using (Html.BeginForm("Register", "Account",
+         new { ReturnUrl = ViewBag.ReturnUrl },
+         FormMethod.Post, new { @class = "form-vertical" }))
+         {
+            @Html.AntiForgeryToken()
+            <div class="control-group normal_text"> <h3>Register new user</h3></div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_lg"><i class="icon-user"> </i></span><input type="text" name="UserName" placeholder="Email" />
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" name="Password" placeholder="Password" />
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_ly"><i class="icon-lock"></i></span><input type="password" name="confirmPassword" placeholder="Confirm your password" />
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_lg"><i class="icon-user"></i></span><input type="text" name="Name" placeholder="User name" />
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_lg"><i class="icon-user"></i></span><input type="text" name="Last_name" placeholder="User last name" />
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_lg"><i class="icon-user"></i></span><input type="text" name="Middle_name" placeholder="Middle initial name" />
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_lg"><i class="icon-mobile-phone"></i></span><input type="text" name="Phone" placeholder="User phone number" />
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on bg_lg"><i class="icon-home"></i></span><input type="text" name="Address" placeholder="User address" />
+                    </div>
+                </div>
+            </div>
+
+                    <div class="form-actions">
+                        <span class="pull-right"><button type="submit" class="btn btn-success">Register</button></span>
+                    </div>
+            
+        }
+
+    @Scripts.Render("~/Content/themes/mytheme/loginjs")
+</body>
+
+</html>

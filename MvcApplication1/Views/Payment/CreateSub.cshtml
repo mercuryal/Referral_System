@@ -1,0 +1,133 @@
+﻿@model MvcApplication1.Models.Subscription
+
+@{
+    ViewBag.Title = "CreateSub";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                     <div class="header">
+                        <h4 class="title">Subscribe</h4>
+                        <p class="category">Payment method</p>
+                      </div>
+                    @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                    <div class="content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Credit Card</label>
+                                        <select name="CreditCard" class="form-control">
+                                            <option value="Master Card">Master Card</option>
+                                            <option value="Visa">Visa</option>
+                                            <option value="American Express">American Express</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Card number</label>
+                                        <input type="text" class="form-control" placeholder="0000-0000-0000-0000" name="CardNumber" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Cvv code</label>
+                                        <input type="text" class="form-control" placeholder="CVV code" name="CVVCode" value="" required>
+                                    </div>
+                                 </div>
+                             </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Expiration Date</label>
+                                        <input type="date" class="form-control" name="ExpirationDate" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Billing Address</label>
+                                        <input type="text" class="form-control" placeholder="Billing address" name="BillingAddress" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>ZIP</label>
+                                        <input type="text" class="form-control" name="Zip" placeholder="Zip code" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="category">Business information</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" name="BusinessName" placeholder="Your business name" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input type="text" class="form-control" name="BusinessAddress" placeholder="Your business address" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        <input type="text" class="form-control" name="Phone" placeholder="Your business phone" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" name="Email" placeholder="Your business email" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Contact name</label>
+                                        <input type="text" class="form-control" name="Contact_name" placeholder="Contact name" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary btn-fill pull-right">Save</button>
+                            </div>
+                            </div>
+                        </div>
+                            <div class="clearfix"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

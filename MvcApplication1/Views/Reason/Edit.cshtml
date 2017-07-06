@@ -1,0 +1,47 @@
+﻿@model MvcApplication1.Models.Reason
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        @Html.ActionLink("Back to List", "Index")
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Update reason</h4>
+                    </div>
+                    <div class="content">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" placeholder="Reason name" name="Name" value="@Model.Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <input type="text" class="form-control" placeholder="Reason description" name="Description" value="@Model.Description">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-fill pull-right">Save</button>
+                            <div class="clearfix"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

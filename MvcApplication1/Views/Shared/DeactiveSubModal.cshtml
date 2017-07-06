@@ -1,0 +1,18 @@
+﻿<!-- Modal -->
+<div class="modal fade" id="DeactiveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to de-activate your service? You will not be able to send any referrals after your paid subscription term expires
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary btn-fill" data-dismiss="modal">No, I want to keep using the service </button>
+                <a href="@Url.Action("Suspend", "Payment", new { id = Membership.GetUser().ProviderUserKey })" class="btn btn-sm btn-danger btn-fill">Yes, de-activate service</a>
+            </div>
+        </div>
+    </div>
+</div>

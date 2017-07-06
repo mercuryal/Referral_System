@@ -1,0 +1,162 @@
+﻿@model MvcApplication1.Models.Referral
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+
+    string DoctorName = Model.Doctor.Name + " " + Model.Doctor.Last_name;
+    string DoctorClinic = Model.Doctor.Clinic_name;
+    string DoctorPhone = Model.Doctor.Office_phone;
+    string DoctorEmail = Model.Doctor.Email;
+    string DoctorAddress = Model.Doctor.Address;
+    string DoctorCity = Model.Doctor.City;
+    string DoctorState = Model.Doctor.State;
+    string DEA = Model.Doctor.DEA;
+    string NABP = Model.Doctor.NAGP;
+    string NPI = Model.Doctor.NPI;
+
+    string PatientName = Model.Patient.First_name + " " + Model.Patient.Last_name;
+    string Reason = Model.Reason.Name;
+    string Notes = Model.Note;
+    DateTime Date = Model.Date;
+    <div class="content">
+        <div class="container-fluid">
+            @Html.ActionLink("Back to List", "Index")
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Referral details</h4>
+                        </div>
+                        <div class="content">
+                            
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <h6>Doctor</h6>
+                                            <label>@DoctorName</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <h6>Clinic</h6>
+                                            <label>@DoctorClinic</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h6>Email address</h6>
+                                            <label>@DoctorEmail</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h6>City</h6>
+                                            <label>@DoctorCity</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h6>State</h6>
+                                            <label>@DoctorState</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h6>Address</h6>
+                                            <label>@DoctorAddress</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h6>DEA</h6>
+                                            <label>@DEA</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h6>NPI</h6>
+                                            <label>@NPI</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h6>NABP</h6>
+                                            <label>@NABP</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h6>Patient</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h6>Name</h6>
+                                            <label>@PatientName</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h6>Reason</h6>
+                                            <label>@Reason</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <h6>Date</h6>
+                                            <label>@Date</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h6>Additional notes:</h6>
+                                            <label>@Notes</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-info btn-fill" })
+                   
+                                @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class="btn btn-danger btn-fill pull-right"})
+                            
+                                <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
